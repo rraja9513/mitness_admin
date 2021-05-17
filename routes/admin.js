@@ -1,6 +1,11 @@
 const router=require('express').Router();
 const passport=require('passport');
 let Admin=require('../models/admin.model');
+router.route('/').get((req, res) => {
+    Admin.find()
+      .then(admin => res.json(admin))
+      .catch(err => res.status(400).json('Error: ' + err));
+  });
 router.route('/changepassword').post((req,res)=>{
     Admin.findOne({ email: req.body.email })
     .then((admin) => {
