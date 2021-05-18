@@ -1,5 +1,10 @@
 const router=require('express').Router();
 let Category=require('../models/category.model');
+router.route('/').get((req, res) => {
+  Category.find()
+    .then(categories => res.json(categories))
+    .catch(err => res.status(400).json('Error: ' + err));
+});
 router.route('/add').post((req,res)=>{
     const cname= req.body.cname;
     const image=req.body.image;
