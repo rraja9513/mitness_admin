@@ -8,14 +8,14 @@ Video.find()
 router.route('/add').post((req,res)=>{
     const exercisename= req.body.exercisename;
     const vname=req.body.vname;
-    const exreciseduration = req.body.exreciseduration;
+    const exerciseduration = req.body.exerciseduration;
     const exerciseprice = req.body.exerciseprice;
     const access = req.body.access;
     const status= req.body.status;
     const newVideo=new Video({
         exercisename,
         vname,
-        exreciseduration,
+        exerciseduration,
         exerciseprice,
         access,
         status,

@@ -8,7 +8,7 @@ const videoSchema=new Schema(
        vname:{
            type:String,
        },
-       exreciseduration:{
+       exerciseduration:{
            type:String,
        },
        exerciseprice:{
