@@ -7,7 +7,7 @@ router.route('/').get((req, res) => {
 });
 router.route('/add').post((req,res)=>{
     const cname= req.body.cname;
-    const image=req.file.path;
+    const image=req.body.image;
     const  caloriesburnt = req.body. caloriesburnt;
     const newCategory=new Category({
         cname,
