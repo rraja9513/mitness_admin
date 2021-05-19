@@ -1,13 +1,39 @@
 const router=require('express').Router();
+const multer = require('multer');
+const storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+      cb(null, './uploads/');
+    },
+    filename: function(req, file, cb) {
+        cb(null, Date.now() + file.originalname);  
+    }
+  });
+  const fileFilter = (req, file, cb) => {
+    // reject a file
+    if (file.mimetype === 'image/jpg' || file.mimetype === 'image/png') {
+      cb(null, true);
+    } else {
+      cb(null, false);
+    }
+  };
+  
+  const upload = multer({
+    storage: storage,
+    limits: {
+      fileSize: 1024 * 1024 * 100
+    },
+    fileFilter: fileFilter
+  });
+  
 let Category=require('../models/category.model');
 router.route('/').get((req, res) => {
   Category.find()
     .then(categories => res.json(categories))
     .catch(err => res.status(400).json('Error: ' + err));
 });
-router.route('/add').post((req,res)=>{
+router.post('/add',upload.single('Image'),(req,res)=>{
     const cname= req.body.cname;
-    const image=req.body.image;
+    const image=req.file.path;
     const  caloriesburnt = req.body. caloriesburnt;
     const newCategory=new Category({
         cname,
