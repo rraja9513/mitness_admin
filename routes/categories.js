@@ -31,7 +31,7 @@ router.route('/').get((req, res) => {
     .then(categories => res.json(categories))
     .catch(err => res.status(400).json('Error: ' + err));
 });
-router.post('/add',upload.single('image'),(req,res)=>{
+router.route('/add').post(upload.single('image'),(req,res)=>{
     const cname= req.body.cname;
     const image=req.file.path;
     const  caloriesburnt = req.body. caloriesburnt;
