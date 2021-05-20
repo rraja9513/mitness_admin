@@ -5,6 +5,11 @@ Video.find()
 .then(videos=>res.json(videos))
 .catch(err => res.status(400).json('Error: ' + err));
 });
+router.route('/search').post((req, res) => {
+    Video.find({exercisename : req.body.exercisename})
+      .then(videos => res.json(videos))
+      .catch(err => res.status(400).json('Error: ' + err));
+  });
 router.route('/add').post((req,res)=>{
     const exercisename= req.body.exercisename;
     const vname=req.body.vname;

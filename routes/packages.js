@@ -29,6 +29,11 @@ Package.find()
 .then(packages=>res.json(packages))
 .catch(err => res.status(400).json('Error: ' + err));
 });
+router.route('/search').post((req, res) => {
+  Package.find({packagename : req.body.packagename})
+    .then(packages => res.json(packages))
+    .catch(err => res.status(400).json('Error: ' + err));
+});
 router.post('/add',upload.single('video'),(req,res,next)=>{
     const packagename= req.body.packagename;
     const category=req.body.category;
