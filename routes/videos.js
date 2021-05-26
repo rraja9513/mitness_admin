@@ -29,4 +29,9 @@ router.route('/add').post((req,res)=>{
     .then(()=>res.json('Video Added'))
     .catch(err=>res.status(400).json('Error:'+err));
 });
+router.route('/:id').delete((req, res) => {
+    Video.findByIdAndDelete(req.params.id)
+      .then(() => res.json('Video deleted.'))
+      .catch(err => res.status(400).json('Error: ' + err));
+  });
 module.exports=router;
