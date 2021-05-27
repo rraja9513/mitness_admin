@@ -29,6 +29,11 @@ router.route('/').get((req, res) => {
     .then(categories => res.json(categories))
     .catch(err => res.status(400).json('Error: ' + err));
 });
+router.route('/:id').get((req, res) => {
+  Category.findById(req.params.id)
+    .then(category => res.json(category))
+    .catch(err => res.status(400).json('Error: ' + err));
+});
 router.post('/add',upload.single('image'),(req,res,next)=>{
     const cname= req.body.cname;
     const image=req.file.path;
