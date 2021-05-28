@@ -47,11 +47,11 @@ router.post('/add',upload.single('image'),(req,res,next)=>{
     .then(()=>res.json('Category Added'))
     .catch(err=>res.status(400).json('Error:'+err));
 });
-router.route('/update/:id').post((req, res) => {
+router.post('/update/:id',upload.single('image'),(req,res,next)=>{
     Category.findById(req.params.id)
       .then(category => {
         category.cname = req.body.cname;
-        category.image = req.body.image;
+        category.image = req.file.path;
         category.caloriesburnt = req.body.caloriesburnt;
   
         category.save()
