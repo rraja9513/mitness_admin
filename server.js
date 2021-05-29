@@ -29,10 +29,14 @@ const adminRouter=require('./routes/admin');
 const videoRouter=require('./routes/videos');
 const categoryRouter=require('./routes/categories');
 const packageRouter=require('./routes/packages');
+const faqRouter=require('./routes/faqs');
+const contactusRouter=require('./routes/contactus');
 app.use('/admin',adminRouter);
 app.use('/videos',videoRouter);
 app.use('/categories',categoryRouter);
 app.use('/packages',packageRouter);
+app.use('/faqs',faqRouter);
+app.use('/contactus',contactusRouter);
 app.listen(port,function(){
     console.log("Server started Successfully");
 });
