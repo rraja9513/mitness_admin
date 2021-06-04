@@ -24,12 +24,12 @@ const upload = multer({
   fileFilter: fileFilter
 });
 let Category=require('../models/category.model');
-router.route('/').get((req, res) => {
+router.route('/').post((req, res) => {
   Category.find()
     .then(categories => res.json(categories))
     .catch(err => res.status(400).json('Error: ' + err));
 });
-router.route('/:id').get((req, res) => {
+router.route('/:id').post((req, res) => {
   Category.findById(req.params.id)
     .then(category => res.json(category))
     .catch(err => res.status(400).json('Error: ' + err));

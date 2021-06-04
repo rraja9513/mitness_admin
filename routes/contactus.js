@@ -1,11 +1,11 @@
 const router=require('express').Router();
 let Contactus=require('../models/contactus.model');
-router.route('/').get((req, res) => {
+router.route('/').post((req, res) => {
     Contactus.find()
       .then(contacts => res.json(contacts))
       .catch(err => res.status(400).json('Error: ' + err));
   });
-  router.route('/:id').get((req, res) => {
+  router.route('/:id').post((req, res) => {
     Contactus.findById(req.params.id)
       .then(contact => res.json(contact))
       .catch(err => res.status(400).json('Error: ' + err));

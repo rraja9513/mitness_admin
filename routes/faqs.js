@@ -1,11 +1,11 @@
 const router=require('express').Router();
 let Faq=require('../models/faq.model');
-router.route('/').get((req, res) => {
+router.route('/').post((req, res) => {
     Faq.find()
       .then(faqs => res.json(faqs))
       .catch(err => res.status(400).json('Error: ' + err));
   });
-  router.route('/:id').get((req, res) => {
+  router.route('/:id').post((req, res) => {
     Faq.findById(req.params.id)
       .then(faq => res.json(faq))
       .catch(err => res.status(400).json('Error: ' + err));

@@ -1,6 +1,6 @@
 const router=require('express').Router();
 let Video=require('../models/video.model');
-router.route('/').get((req,res)=>{
+router.route('/').post((req,res)=>{
 Video.find()
 .then(videos=>res.json(videos))
 .catch(err => res.status(400).json('Error: ' + err));

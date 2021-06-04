@@ -24,7 +24,7 @@ const upload = multer({
   fileFilter: fileFilter
 });
 let Package=require('../models/package.model');
-router.route('/').get((req,res)=>{
+router.route('/').post((req,res)=>{
 Package.find()
 .then(packages=>res.json(packages))
 .catch(err => res.status(400).json('Error: ' + err));
