@@ -15,11 +15,13 @@ router.route('/').get((req, res) => {
     const lastname=req.body.lastname;
     const contactnumber= req.body.contactnumber;
     const email=req.body.email;
+    const query=req.body.query;
     const newContactus=new Contactus({
        firstname,
        lastname,
        contactnumber,
-       email
+       email,
+       query
     })
     newContactus.save()
     .then(()=>res.json('Contact Added'))
@@ -32,6 +34,7 @@ router.route('/update/:id').post((req,res)=>{
       contact.lastname = req.body.lastname;
       contact.contactnumber = req.body.contactnumber;
       contact.email = req.body.email;
+      contact.query=req.body.query;
 
       contact.save()
         .then(() => res.json('Contact Updated!'))

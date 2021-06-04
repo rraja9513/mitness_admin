@@ -13,6 +13,9 @@ const contactusSchema=new Schema(
        },
        email:{
            type:String
+       },
+       query:{
+           type:String
        }
     },
     {
