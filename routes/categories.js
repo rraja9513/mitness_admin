@@ -29,7 +29,7 @@ router.route('/').post((req, res) => {
     .then(categories => res.json(categories))
     .catch(err => res.status(400).json('Error: ' + err));
 });
-router.route('/:id').post((req, res) => {
+router.route('/:id').get((req, res) => {
   Category.findById(req.params.id)
     .then(category => res.json(category))
     .catch(err => res.status(400).json('Error: ' + err));

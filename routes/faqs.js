@@ -5,7 +5,7 @@ router.route('/').post((req, res) => {
       .then(faqs => res.json(faqs))
       .catch(err => res.status(400).json('Error: ' + err));
   });
-  router.route('/:id').post((req, res) => {
+  router.route('/:id').get((req, res) => {
     Faq.findById(req.params.id)
       .then(faq => res.json(faq))
       .catch(err => res.status(400).json('Error: ' + err));
