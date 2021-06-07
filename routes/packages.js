@@ -56,4 +56,9 @@ router.route('/:id').delete((req, res) => {
       .then(() => res.json('Package deleted.'))
       .catch(err => res.status(400).json('Error: ' + err));
   });
+  router.route('/delete').post(async(req,res)=>{
+    const ids=req.body.arrayids;
+    await Package.deleteMany({_id:{$in:ids}})
+    res.status(200).json({ message: 'Deleted Successfully'});
+  })
 module.exports=router;

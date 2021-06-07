@@ -65,4 +65,9 @@ router.post('/update/:id',upload.single('image'),(req,res,next)=>{
       .then(() => res.json('Category deactivated.'))
       .catch(err => res.status(400).json('Error: ' + err));
   });
+  router.route('/delete').post(async(req,res)=>{
+    const ids=req.body.arrayids;
+    await Category.deleteMany({_id:{$in:ids}})
+    res.status(200).json({ message: 'Deleted Successfully'});
+  })
 module.exports=router;
